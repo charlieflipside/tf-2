@@ -5,6 +5,7 @@
   import {
     AccountConnect,
     DaiBalance,
+    WethBalance,
     EnsData,
     Multicall,
     NetworkDetails,
@@ -22,6 +23,7 @@
     NetworkDetails,
     EnsData,
     DaiBalance,
+    WethBalance,
     Multicall,
     Signing,
   ];
