@@ -7,17 +7,6 @@
 
 {#await fetchEnsData($account)}
   <p>Loading...</p>
-{:then { name, avatar }}
+{:then { name }}
   <p>Name: {name}</p>
-  <p>Avatar: {avatar}</p>
-  <img class="avatar" src={avatar} alt="avatar" hidden={!avatar} />
 {/await}
-
-<style>
-  .avatar {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    border-radius: 50%;
-  }
-</style>
