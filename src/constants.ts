@@ -16,3 +16,22 @@ export const FRZ_CONFIG = {
   abi: ethereumContracts["0x1"].FRZ.abi as Abi,
 };
 
+export const GOV_CONFIG = {
+  address: ethereumContracts["0x1"].TrueFreezeGovernor.address,
+  abi: ethereumContracts["0x1"].TrueFreezeGovernor.abi as Abi,
+};
+
+export const MULTIREWARD_CONFIG = {
+  address: ethereumContracts["0x1"].MultiRewards.address,
+  abi: ethereumContracts["0x1"].MultiRewards.abi as Abi,
+};
+
+export const FRTOKENSTAKING_CONFIG = {
+  address: ethereumContracts["0x1"].frTokenStaking.address,
+  abi: ethereumContracts["0x1"].frTokenStaking.abi as Abi,
+};
+
+export const NFT_CONFIG = {
+  address: ethereumContracts["0x1"].nonFungiblePositionManager.address,
+  abi: ethereumContracts["0x1"].nonFungiblePositionManager.abi as Abi,
+};
