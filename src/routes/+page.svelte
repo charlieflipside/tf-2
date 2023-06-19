@@ -4,12 +4,13 @@
   import { publicProvider } from "sveeeth/providers";
   import {
     AccountConnect,
-    DaiBalance,
     WethBalance,
+    FrethBalance,
+    FRZBalance,
     EnsData,
     Multicall,
     NetworkDetails,
-    Signing
+    Signing, 
   } from "../components";
 
   const { provider } = configureChains([mainnet], [publicProvider()]);
@@ -22,8 +23,9 @@
   const components = [
     NetworkDetails,
     EnsData,
-    DaiBalance,
     WethBalance,
+    FrethBalance,
+    FRZBalance,
     Multicall,
     Signing,
   ];
