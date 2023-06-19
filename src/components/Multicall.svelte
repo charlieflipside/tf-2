@@ -1,10 +1,10 @@
 <script lang="ts">
   import { account, multicall } from "sveeeth";
-  import { DAI_CONFIG } from "../constants";
+  import { WETH_CONFIG } from "../constants";
 
-  const daiMulticall = multicall(DAI_CONFIG);
+  const wethMulticall = multicall(WETH_CONFIG);
 
-  $: daiMulticallCal = daiMulticall
+  $: wethMulticallCal = wethMulticall
     .call("balanceOf", [$account.address])
     .call("totalSupply")
     .call("name")
@@ -13,7 +13,7 @@
 
 <h3>Multicall</h3>
 
-{#await $account.address && daiMulticallCal.execute()}
+{#await $account.address && wethMulticallCal.execute()}
   <p>Loading...</p>
 {:then result}
   <pre>{JSON.stringify(result, null, 2)}</pre>
