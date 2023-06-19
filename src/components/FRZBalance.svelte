@@ -9,5 +9,5 @@
     {#await $account.address && frz.balanceOf($account.address)}
     <p>Loading...</p>
     {:then balance}
-    <p>Balance: {balance/1e18} FRZ</p>  
+    <p>Balance: {balance / 1e18} FRZ</p>  
     {/await}
