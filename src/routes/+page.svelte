@@ -31,7 +31,7 @@
   ];
 </script>
 
-<h1>Sveeeth Example</h1>
+<h1>True Freeze Minimalist</h1>
 <hr />
 
 <AccountConnect />
