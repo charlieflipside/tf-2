@@ -5,6 +5,7 @@
   import {
     AccountConnect,
     WethBalance,
+    LockWAsset,
     FrethBalance,
     FRZBalance,
     EnsData,
@@ -24,6 +25,7 @@
     NetworkDetails,
     EnsData,
     WethBalance,
+    LockWAsset,
     FrethBalance,
     FRZBalance,
     Multicall,

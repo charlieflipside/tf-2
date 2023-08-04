@@ -1,5 +1,6 @@
 export { default as AccountConnect } from "./AccountConnect.svelte";
 export { default as WethBalance } from "./WethBalance.svelte";
+export { default as LockWAsset } from "./LockWAsset.svelte";
 export { default as FrethBalance } from "./frETHBalance.svelte";
 export { default as FRZBalance } from "./FRZBalance.svelte";
 export { default as EnsData } from "./EnsData.svelte";
