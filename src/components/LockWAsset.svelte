@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { contract } from "sveeeth";
+    import {account, contract } from "sveeeth";
     import { ethers } from "ethers";
     import { GOV_CONFIG } from "../constants";
 
@@ -16,7 +16,7 @@
         console.log("Lock duration:", lockDuration);
 
         console.log("Contract instance:", governorContract);
-    
+
         try {
             // Convert the amount to lock from Ether to Wei
             const amountToLockWei = ethers.utils.parseEther(amountToLock.toString());

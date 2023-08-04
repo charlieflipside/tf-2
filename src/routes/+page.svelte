@@ -5,6 +5,7 @@
   import {
     AccountConnect,
     WethBalance,
+    ApproveTokens,
     LockWAsset,
     FrethBalance,
     FRZBalance,
@@ -25,6 +26,7 @@
     NetworkDetails,
     EnsData,
     WethBalance,
+    ApproveTokens,
     LockWAsset,
     FrethBalance,
     FRZBalance,
