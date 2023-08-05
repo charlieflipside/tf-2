@@ -70,8 +70,6 @@ const approveAllNFTsToGovernor = async () => {
             return;
         }
 
-        const userAddress = $account.address;
-
         // Approve the Governor contract to transfer any NFT owned by the user
         const transaction = await freezer.setApprovalForAll(GOV_CONFIG.address, true);
 
