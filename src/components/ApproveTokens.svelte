@@ -7,16 +7,51 @@
     import { FRZ_CONFIG } from "../constants";
     import { NFT_CONFIG } from "../constants";
 
-const freth = contract(FRETH_CONFIG);
-const weth = contract(WETH_CONFIG);
-const frz = contract(FRZ_CONFIG);
-const freezer = contract(NFT_CONFIG);
-const governorContract = contract(GOV_CONFIG);
+export const freth = contract(FRETH_CONFIG);
+export const weth = contract(WETH_CONFIG);
+export const frz = contract(FRZ_CONFIG);
+export const freezer = contract(NFT_CONFIG);
+export const governorContract = contract(GOV_CONFIG);
+let approvalAmount: number;
 
-const approveWETHtoGovernor = async () => {
+$: async () => {
+    if ($account.address) {
+    const rawApprovalAmount = await checkGovernorWETHApproval();
+    approvalAmount = parseFloat(ethers.utils.formatUnits(rawApprovalAmount, 18));
+    }
+}
+
+const getApprovalAmount = async () => {
+    const rawApprovalAmount = await checkGovernorWETHApproval();
+    approvalAmount = parseFloat(ethers.utils.formatUnits(rawApprovalAmount, 18));
+};
+
+export const checkGovernorWETHApproval = async () => {
+
+    try {
+    if (!$account.address) {
+    alert("Please connect your wallet first.");
+    return;
+    }
+
+    // Get the user's address
+    const userAddress = $account.address;
+
+    // Check the allowance for the Governor contract
+    const allowance = await weth.allowance(userAddress, GOV_CONFIG.address);
+
+    // Log the allowance
+    console.log(`Allowance for Governor contract: ${allowance}`);
+    return allowance;
+} catch (error) {
+    alert("Error: " + error.message);
+    throw error;
+}
+};
+
+export const approveWETHtoGovernor = async () => {
 
         try {
-            
             if (!$account.address) {
             alert("Please connect your wallet first.");
             return;
@@ -39,7 +74,7 @@ const approveWETHtoGovernor = async () => {
         }
     };
 
-const approvefrETHtoGovernor = async () => {
+export const approvefrETHtoGovernor = async () => {
     try {
         
         if (!$account.address) {
@@ -63,7 +98,8 @@ const approvefrETHtoGovernor = async () => {
         alert("Error: " + error.message);
     }
 };
-const approveAllNFTsToGovernor = async () => {
+
+export const approveAllNFTsToGovernor = async () => {
     try {
         if (!$account.address) {
             alert("Please connect your wallet first.");
@@ -93,3 +129,7 @@ const approveAllNFTsToGovernor = async () => {
 
 <h2>Approve Governor to use Freezer NFT</h2>
 <button on:click={approveAllNFTsToGovernor}>Approve Freezer NFT to Governor</button>
+
+<h2>Gov WETH Approval </h2>
+<p>Approval Amount: {approvalAmount}</p>
+<button on:click={getApprovalAmount}>Check Approval</button>
