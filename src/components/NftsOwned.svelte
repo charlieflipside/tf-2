@@ -4,7 +4,7 @@
     import { client } from './clients';
     import { NFT_CONFIG } from "../constants";
     import { writable } from 'svelte/store';
-    import { ownedTokenIds } from './ownedNfts.js';
+    import { ownedTokenIds } from './tokenStores.js';
 
     // Define an interface for the log structure
     interface Log {

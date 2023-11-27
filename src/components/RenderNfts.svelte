@@ -1,7 +1,7 @@
 <script>
     import { contract } from "sveeeth";
     import { NFT_CONFIG } from "../constants";
-    import { ownedTokenIds } from './ownedNfts.js';
+    import { ownedTokenIds } from './tokenStores.js';
 
     let tokenIds = [];
     let tokenSVGs = new Map();
