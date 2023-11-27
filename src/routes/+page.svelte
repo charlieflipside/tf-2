@@ -46,6 +46,11 @@
 </script>
 
 <h1>True Freeze Minimalist</h1>
+<p>
+  Due to server deprecation, the original UI no longer functions. This Minimalist website remains as core functionality for accessing 
+  the primitive and withdrawing assets. Other user interfaces may exist for True Freeze. Use all with caution and see: https://deepfreezellc.gitbook.io/true-freeze/key-info/token-addresses for 
+the immutable contract addresses and further instructions.
+</p>
 <hr />
 
 <AccountConnect />
