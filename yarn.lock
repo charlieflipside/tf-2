@@ -204,6 +204,11 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     "to-fast-properties" "^2.0.0"
 
+"@cloudflare/workers-types@^4.20230404.0":
+  "integrity" "sha512-+kWfpCkqiepwAKXyHoE0gnkPgkLhz0/9HOBIGhHRsUvUKvhUtm3mbqqoGRWgF1qcjzrDUBbrrOq4MYHfFtc2RA=="
+  "resolved" "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-4.20231121.0.tgz"
+  "version" "4.20231121.0"
+
 "@coinbase/wallet-sdk@^3.6.6":
   "integrity" "sha512-lIGvXMsgpsQWci/XOMQIJ2nIZ8JUy/L+bvC0wkRaYarr0YylwpXrJ2gRM3hCXPS477pkyO7N/kSiAoRgEXUdJQ=="
   "resolved" "https://registry.npmjs.org/@coinbase/wallet-sdk/-/wallet-sdk-3.7.2.tgz"
@@ -231,6 +236,11 @@
   "integrity" "sha512-DjDa9ywLUUmjhV2Y9wUTIF+1XsmuFGvZoCmOWkli1XcNAh5t25cc7fgsCx4Zi/Uurep3TTLyDiKATgGEg61pkA=="
   "resolved" "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.17.15.tgz"
   "version" "0.17.15"
+
+"@esbuild/win32-x64@0.18.20":
+  "integrity" "sha512-kTdfRcSiDfQca/y9QIkng02avJ+NCaQvrMejlsB3RRv5sE9rRoeBPISaZpKxHELzRxZyLvNts1P27W3wV+8geQ=="
+  "resolved" "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz"
+  "version" "0.18.20"
 
 "@ethersproject/abi@^5.7.0", "@ethersproject/abi@5.7.0":
   "integrity" "sha512-351ktp42TiRcYB3H1OP8yajPeAQstMW/yCFokj/AthP9bLHzQFPlOrxOcwYEDkUAICmOHljvN4K39OMTMUa9RA=="
@@ -1016,6 +1026,15 @@
   "version" "2.0.0"
   dependencies:
     "import-meta-resolve" "^2.2.0"
+
+"@sveltejs/adapter-cloudflare@^2.3.3":
+  "integrity" "sha512-bbcm6kq4dEluFtFJZed3KSRG4f5GUElYkVfOmnPruTqZ29nTElPJTomAu5QCp7GLkwA26O3h1Dk7+d9yLTQEXg=="
+  "resolved" "https://registry.npmjs.org/@sveltejs/adapter-cloudflare/-/adapter-cloudflare-2.3.3.tgz"
+  "version" "2.3.3"
+  dependencies:
+    "@cloudflare/workers-types" "^4.20230404.0"
+    "esbuild" "^0.18.11"
+    "worktop" "0.8.0-next.15"
 
 "@sveltejs/kit@^1.0.0", "@sveltejs/kit@^1.5.0":
   "integrity" "sha512-GsjTkMbKzXdbeRg0tk8S7HNShQ4879ftRr0ZHaZfjbig1xQwG57Bvcm9U9/mpLJtCapLbLWUnygKrgcLISLC8A=="
@@ -2018,6 +2037,34 @@
     "@esbuild/win32-arm64" "0.17.15"
     "@esbuild/win32-ia32" "0.17.15"
     "@esbuild/win32-x64" "0.17.15"
+
+"esbuild@^0.18.11":
+  "integrity" "sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA=="
+  "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.18.20.tgz"
+  "version" "0.18.20"
+  optionalDependencies:
+    "@esbuild/android-arm" "0.18.20"
+    "@esbuild/android-arm64" "0.18.20"
+    "@esbuild/android-x64" "0.18.20"
+    "@esbuild/darwin-arm64" "0.18.20"
+    "@esbuild/darwin-x64" "0.18.20"
+    "@esbuild/freebsd-arm64" "0.18.20"
+    "@esbuild/freebsd-x64" "0.18.20"
+    "@esbuild/linux-arm" "0.18.20"
+    "@esbuild/linux-arm64" "0.18.20"
+    "@esbuild/linux-ia32" "0.18.20"
+    "@esbuild/linux-loong64" "0.18.20"
+    "@esbuild/linux-mips64el" "0.18.20"
+    "@esbuild/linux-ppc64" "0.18.20"
+    "@esbuild/linux-riscv64" "0.18.20"
+    "@esbuild/linux-s390x" "0.18.20"
+    "@esbuild/linux-x64" "0.18.20"
+    "@esbuild/netbsd-x64" "0.18.20"
+    "@esbuild/openbsd-x64" "0.18.20"
+    "@esbuild/sunos-x64" "0.18.20"
+    "@esbuild/win32-arm64" "0.18.20"
+    "@esbuild/win32-ia32" "0.18.20"
+    "@esbuild/win32-x64" "0.18.20"
 
 "escalade@^3.1.1":
   "integrity" "sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw=="
@@ -3175,6 +3222,11 @@
   "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.14.0.tgz"
   "version" "0.14.0"
 
+"regexparam@^2.0.0":
+  "integrity" "sha512-zRgSaYemnNYxUv+/5SeoHI0eJIgTL/A2pUtXUPLHQxUldagouJ9p+K6IbIZ/JiQuCEv2E2B1O11SjVQy3aMCkw=="
+  "resolved" "https://registry.npmjs.org/regexparam/-/regexparam-2.0.1.tgz"
+  "version" "2.0.1"
+
 "require-directory@^2.1.1":
   "integrity" "sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q=="
   "resolved" "https://registry.npmjs.org/require-directory/-/require-directory-2.1.1.tgz"
@@ -3757,6 +3809,14 @@
   "version" "2.0.2"
   dependencies:
     "isexe" "^2.0.0"
+
+"worktop@0.8.0-next.15":
+  "integrity" "sha512-0ycNO52P6nVwsjr1y20zuf0nqJatAb8L7MODBfQIxbxndHV5O4s50oZZMHWhJG1RLpHwbK0Epq8aaQK4E2GlgQ=="
+  "resolved" "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.15.tgz"
+  "version" "0.8.0-next.15"
+  dependencies:
+    "mrmime" "^1.0.0"
+    "regexparam" "^2.0.0"
 
 "wrap-ansi@^6.2.0":
   "integrity" "sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA=="
