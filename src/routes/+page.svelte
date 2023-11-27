@@ -5,6 +5,7 @@
   import {
     AccountConnect,
     WethBalance,
+    NftsOwned,
     ApproveTokens,
     LockWAsset,
     StakeFRZ,
@@ -28,6 +29,7 @@
     NetworkDetails,
     EnsData,
     WethBalance,
+    NftsOwned,
     ApproveTokens,
     LockWAsset,
     StakeFRZ,

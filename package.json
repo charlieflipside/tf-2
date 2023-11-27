@@ -24,6 +24,7 @@
 		"@wagmi/core": "^0.10.9",
 		"prettier": "^2.8.7",
 		"prettier-plugin-svelte": "^2.10.0",
-		"sveeeth": "0.0.1"
+		"sveeeth": "0.0.1",
+		"viem": "^1.19.9"
 	}
 }

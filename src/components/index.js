@@ -1,5 +1,6 @@
 export { default as AccountConnect } from "./AccountConnect.svelte";
 export { default as WethBalance } from "./WethBalance.svelte";
+export { default as NftsOwned } from "./NftsOwned.svelte";
 export { default as LockWAsset } from "./LockWAsset.svelte";
 export { default as StakeFRZ } from "./StakeFRZ.svelte";
 export { default as BurnFrAsset } from "./BurnFrAsset.svelte";
