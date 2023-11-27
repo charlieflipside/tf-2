@@ -3,46 +3,51 @@
     import { parseAbiItem } from "viem";
     import { client } from './clients';
     import { NFT_CONFIG } from "../constants";
+    import { writable } from 'svelte/store';
+    import { ownedTokenIds } from './ownedNfts.js';
+
+    // Define an interface for the log structure
+    interface Log {
+        blockNumber: bigint;
+        transactionHash: string;
+        tokenId: number;
+        from: string | undefined;
+        to: string | undefined;
+    }
+
+    const receivedFreezerLogs = writable<Log[]>([]);
+    const sentFreezerLogs = writable<Log[]>([]);
     
-    let receivedFreezerLogs = [];
-    let sentFreezerLogs = [];
-    
-    function decodeTokenId(hexString) {
+    function decodeTokenId(hexString: string): number {
         return parseInt(hexString, 16);
     }
 
     // Define an async function to fetch logs
     async function fetchLogs() {
         try {
-            const receivedLogs = await client.getLogs({  
+            const receivedLogsResponse = await client.getLogs({  
                 address: NFT_CONFIG.address,
                 event: parseAbiItem('event Transfer(address indexed from, address indexed to, uint256 tokenId)'),
                 args: { to: $account.address },
                 fromBlock: 14938400n
             });
-            const sentLogs = await client.getLogs({
+            const sentLogsResponse = await client.getLogs({
                 address: NFT_CONFIG.address,
                 event: parseAbiItem('event Transfer(address indexed from, address indexed to, uint256 tokenId)'),
                 args: { from: $account.address },
                 fromBlock: 14938400n
             });
 
-            receivedFreezerLogs = receivedLogs.map(log => ({
+            const mapLog = (log: any): Log => ({
                 blockNumber: log.blockNumber,
                 transactionHash: log.transactionHash,
                 tokenId: decodeTokenId(log.topics[3]),
                 from: log.args.from,
                 to: log.args.to
-            }));
-            sentFreezerLogs = sentLogs.map(log => ({
-                blockNumber: log.blockNumber,
-                transactionHash: log.transactionHash,
-                tokenId: decodeTokenId(log.topics[3]),
-                from: log.args.from,
-                to: log.args.to
-            }));
+            });
 
-            console.log(receivedFreezerLogs, sentFreezerLogs);
+            receivedFreezerLogs.set(receivedLogsResponse.map(mapLog));
+            sentFreezerLogs.set(sentLogsResponse.map(mapLog));
         } catch (error) {
             console.error("Error fetching logs:", error);
         }
@@ -52,13 +57,39 @@
     $: if ($account.address) {
         fetchLogs();
     }
+
+    // Reactive statement to process logs and log the owned tokens
+    $: {
+        const receivedLogs = $receivedFreezerLogs;
+        const sentLogs = $sentFreezerLogs;
+        getCurrentOwnedTokens(receivedLogs, sentLogs);
+    }
+
+    function getCurrentOwnedTokens(received: Log[], sent: Log[]): void {
+        const ownedTokens = new Set<number>();
+        const allLogs: Log[] = [...received, ...sent];
+
+        // Sort logs by block number
+        allLogs.sort((a, b) => Number(a.blockNumber) - Number(b.blockNumber));
+
+        // Process logs in order
+        for (const log of allLogs) {
+            if (received.includes(log)) {
+                ownedTokens.add(log.tokenId);
+            } else if (sent.includes(log)) {
+                ownedTokens.delete(log.tokenId);
+            }
+        }
+        ownedTokenIds.set(Array.from(ownedTokens));
+    
+    }
 </script>
 
 <!-- Display the received logs -->
-{#if receivedFreezerLogs.length > 0}
+{#if $receivedFreezerLogs.length > 0}
     <h3>Received Freezer Logs:</h3>
     <ul>
-        {#each receivedFreezerLogs as log}
+        {#each $receivedFreezerLogs as log}
             <li>Block: {log.blockNumber.toString()} - Tx: {log.transactionHash} - Token ID: {log.tokenId} - From: {log.from} - To: {log.to}</li>
         {/each}
     </ul>
@@ -67,10 +98,10 @@
 {/if}
 
 <!-- Display the sent logs -->
-{#if sentFreezerLogs.length > 0}
+{#if $sentFreezerLogs.length > 0}
     <h3>Sent Freezer Logs:</h3>
     <ul>
-        {#each sentFreezerLogs as log}
+        {#each $sentFreezerLogs as log}
             <li>Block: {log.blockNumber.toString()} - Tx: {log.transactionHash} - Token ID: {log.tokenId} - From: {log.from} - To: {log.to}</li>
         {/each}
     </ul>
