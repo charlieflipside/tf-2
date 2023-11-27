@@ -26,6 +26,7 @@
 		"prettier": "^2.8.7",
 		"prettier-plugin-svelte": "^2.10.0",
 		"sveeeth": "0.0.1",
-		"viem": "^1.19.9"
+		"viem": "^1.19.9",
+		"yarn": "^1.22.21"
 	}
 }
